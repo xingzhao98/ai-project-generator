@@ -8,7 +8,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    vueDevTools({
+      launchEditor: "webstorm" // 显式指定编辑器[4,6](@ref)
+    }),
   ],
   resolve: {
     alias: {
