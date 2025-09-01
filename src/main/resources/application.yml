@@ -1,6 +1,13 @@
 spring:
   application:
     name: ai-project-generator
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ai_project_generator
+    username: xing
+    password: passwd
+
 
 server:
   port: 8123
