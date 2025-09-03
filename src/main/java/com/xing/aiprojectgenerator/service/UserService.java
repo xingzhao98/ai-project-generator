@@ -2,7 +2,7 @@ package com.xing.aiprojectgenerator.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
-import com.xing.aiprojectgenerator.model.dto.UserQueryRequest;
+import com.xing.aiprojectgenerator.model.dto.user.UserQueryRequest;
 import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.model.vo.LoginUserVO;
 import com.xing.aiprojectgenerator.model.vo.UserVO;

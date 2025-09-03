@@ -1,4 +1,4 @@
-package com.xing.aiprojectgenerator.model.dto;
+package com.xing.aiprojectgenerator.model.dto.user;
 
 import com.xing.aiprojectgenerator.common.PageRequest;
 import lombok.Data;

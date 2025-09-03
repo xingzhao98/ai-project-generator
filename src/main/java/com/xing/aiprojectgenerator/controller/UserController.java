@@ -1,7 +1,6 @@
 package com.xing.aiprojectgenerator.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.fasterxml.jackson.databind.ser.Serializers; // 导入JSON序列化器
 import com.mybatisflex.core.paginate.Page; // 导入MyBatis-Flex分页对象
 import com.xing.aiprojectgenerator.annotation.AuthCheck;
 import com.xing.aiprojectgenerator.common.BaseResponse; // 导入基础响应对象
@@ -11,19 +10,15 @@ import com.xing.aiprojectgenerator.constant.UserConstant;
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode; // 导入错误码枚举
 import com.xing.aiprojectgenerator.exception.ThrowUtils; // 导入异常抛出工具类
-import com.xing.aiprojectgenerator.model.dto.*;
+import com.xing.aiprojectgenerator.model.dto.user.*;
 import com.xing.aiprojectgenerator.model.vo.LoginUserVO;
 import com.xing.aiprojectgenerator.model.vo.UserVO;
 import jakarta.annotation.Resource; // 导入资源注入注解
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.DeleteMapping; // 导入删除映射注解
 import org.springframework.web.bind.annotation.GetMapping; // 导入获取映射注解
-import org.springframework.web.bind.annotation.PathVariable; // 导入路径变量注解
 import org.springframework.web.bind.annotation.PostMapping; // 导入PostMapping注解
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.service.UserService;
 import org.springframework.web.bind.annotation.RestController;
