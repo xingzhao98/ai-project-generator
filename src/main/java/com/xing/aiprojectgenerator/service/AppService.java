@@ -8,6 +8,7 @@ import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.model.vo.AppVO;
 import reactor.core.publisher.Flux;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
