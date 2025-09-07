@@ -2,6 +2,7 @@ package com.xing.aiprojectgenerator.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import com.xing.aiprojectgenerator.model.dto.app.AppAddRequest;
 import com.xing.aiprojectgenerator.model.dto.app.AppQueryRequest;
 import com.xing.aiprojectgenerator.model.entity.App;
 import com.xing.aiprojectgenerator.model.entity.User;
@@ -29,4 +30,6 @@ public interface AppService extends IService<App> {
     String deployApp(Long appId, User loginUser);
 
     void generateAppScreenshotAsync(Long appId, String appUrl);
+
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 }
