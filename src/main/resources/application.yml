@@ -55,3 +55,12 @@ cos:
     secretKey: xjNp7IQVTL5pU1MTM4ZqvnSyHMGwOdgZ
     region: ap-beijing
     bucket: api-screenshot-1257813253
+
+# Pexels 图片搜索配置
+pexels:
+  api-key: EgnxT5C6HVSw5SEjvnMRThdokEtpCTSf7NzbiNe5vUB3Al59IJGGQH8b
+
+# 阿里云 DashScope 配置
+dashscope:
+  api-key: sk-dae4dc10462743cc9a7ba94d826ab407
+  image-model: wan2.2-t2i-flash
