@@ -1,7 +1,6 @@
 package com.xing.aiprojectgenerator.langgraph4j.node;
 
 import com.xing.aiprojectgenerator.langgraph4j.ai.ImageCollectionPlanService;
-import com.xing.aiprojectgenerator.langgraph4j.ai.ImageCollectionService;
 import com.xing.aiprojectgenerator.langgraph4j.model.ImageCollectionPlan;
 import com.xing.aiprojectgenerator.langgraph4j.model.ImageResource;
 import com.xing.aiprojectgenerator.langgraph4j.state.WorkflowContext;
