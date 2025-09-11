@@ -2,6 +2,7 @@ package com.xing.aiprojectgenerator.ai;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.xing.aiprojectgenerator.ai.guardrail.PromptSafetyInputGuardrail;
 import com.xing.aiprojectgenerator.ai.tools.*;
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
@@ -113,6 +114,7 @@ public class AiCodeGeneratorServiceFactory {
                         .hallucinatedToolNameStrategy(toolExecutionRequest -> ToolExecutionResultMessage.from(
                                 toolExecutionRequest, "Error: there is no tool called " + toolExecutionRequest.name()
                         ))
+                        .inputGuardrails(new PromptSafetyInputGuardrail())
                         .build();
             }
             case HTML, MULTI_FILE -> {
@@ -122,6 +124,7 @@ public class AiCodeGeneratorServiceFactory {
                         .chatModel(chatModel)
                         .streamingChatModel(openAiStreamingChatModel)
                         .chatMemory(chatMemory)
+                        .inputGuardrails(new PromptSafetyInputGuardrail())
                         .build();
             }
             default -> throw new BusinessException(ErrorCode.SYSTEM_ERROR,
