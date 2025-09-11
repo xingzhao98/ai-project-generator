@@ -3,6 +3,7 @@ package com.xing.aiprojectgenerator.ai;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.xing.aiprojectgenerator.ai.guardrail.PromptSafetyInputGuardrail;
+import com.xing.aiprojectgenerator.ai.guardrail.RetryOutputGuardrail;
 import com.xing.aiprojectgenerator.ai.tools.*;
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
@@ -115,6 +116,8 @@ public class AiCodeGeneratorServiceFactory {
                                 toolExecutionRequest, "Error: there is no tool called " + toolExecutionRequest.name()
                         ))
                         .inputGuardrails(new PromptSafetyInputGuardrail())
+                        //outputGuardrails(new RetryOutputGuardrail()) 为了流式输出，这里不使用
+                        .maxSequentialToolsInvocations(20)
                         .build();
             }
             case HTML, MULTI_FILE -> {
