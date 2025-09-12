@@ -55,16 +55,6 @@ management:
     health:
       show-details: always
 
-
-# 添加 COS 对象存储配置（需要从腾讯云获取）
-cos:
-  client:
-    host: https://api-screenshot-1257813253.cos.ap-beijing.myqcloud.com
-    secretId: AKIDNcfZLxNaaEj16xhHeTAg0DF5jEZiiVXP
-    secretKey: xjNp7IQVTL5pU1MTM4ZqvnSyHMGwOdgZ
-    region: ap-beijing
-    bucket: api-screenshot-1257813253
-
 # Pexels 图片搜索配置
 pexels:
   api-key: EgnxT5C6HVSw5SEjvnMRThdokEtpCTSf7NzbiNe5vUB3Al59IJGGQH8b

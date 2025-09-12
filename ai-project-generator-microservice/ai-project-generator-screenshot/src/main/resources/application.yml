@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ai-project-generator-screenshot
+  profiles:
+    active: local
+server:
+  port: 8127
+  servlet:
+    context-path: /api
+
