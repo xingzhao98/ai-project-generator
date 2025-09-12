@@ -1,0 +1,19 @@
+groups:
+  - name: ai_model_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: sum(rate(ai_model_requests_total{status="error"}[5m])) / sum(rate(ai_model_requests_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI模型错误率过高"
+          description: "错误率已超过10%，持续5分钟"
+      - alert: SlowResponse
+        expr: avg(ai_model_response_duration_seconds) > 30
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI模型响应时间过长"
+          description: "平均响应时间超过30秒"
