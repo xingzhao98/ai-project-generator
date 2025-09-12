@@ -1,7 +1,6 @@
 package com.xing.aiprojectgenerator.core.saver;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.xing.aiprojectgenerator.constant.AppConstant;
 import com.xing.aiprojectgenerator.exception.BusinessException;

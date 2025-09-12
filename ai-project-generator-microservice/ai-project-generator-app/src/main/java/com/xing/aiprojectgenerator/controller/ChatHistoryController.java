@@ -8,18 +8,16 @@ import com.xing.aiprojectgenerator.common.ResultUtils;
 import com.xing.aiprojectgenerator.constant.UserConstant;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
 import com.xing.aiprojectgenerator.exception.ThrowUtils;
+import com.xing.aiprojectgenerator.innerservice.InnerUserService;
 import com.xing.aiprojectgenerator.model.dto.chatHistory.ChatHistoryQueryRequest;
 import com.xing.aiprojectgenerator.model.entity.User;
-import com.xing.aiprojectgenerator.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.xing.aiprojectgenerator.model.entity.ChatHistory;
 import com.xing.aiprojectgenerator.service.ChatHistoryService;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * 对话历史 控制层。
@@ -32,9 +30,6 @@ public class ChatHistoryController {
 
     @Resource
     private ChatHistoryService chatHistoryService;
-
-    @Resource
-    private UserService userService;
 
     /**
      * 分页查询某个应用的对话历史（游标查询）
@@ -50,7 +45,7 @@ public class ChatHistoryController {
                                                               @RequestParam(defaultValue = "10") int pageSize,
                                                               @RequestParam(required = false) LocalDateTime lastCreateTime,
                                                               HttpServletRequest request) {
-        User loginUser = userService.getLoginUser(request);
+        User loginUser = InnerUserService.getLoginUser(request);
         Page<ChatHistory> result = chatHistoryService.listAppChatHistoryByPage(appId, pageSize, lastCreateTime, loginUser);
         return ResultUtils.success(result);
     }

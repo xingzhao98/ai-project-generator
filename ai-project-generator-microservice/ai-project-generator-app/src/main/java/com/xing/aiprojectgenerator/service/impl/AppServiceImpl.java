@@ -8,6 +8,8 @@ import cn.hutool.core.util.StrUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.xing.aiprojectgenerator.ai.AiCodeGenTypeRoutingService;
+import com.xing.aiprojectgenerator.innerservice.InnerScreenshotService;
+import com.xing.aiprojectgenerator.innerservice.InnerUserService;
 import com.xing.aiprojectgenerator.ai.AiCodeGenTypeRoutingServiceFactory;
 import com.xing.aiprojectgenerator.constant.AppConstant;
 import com.xing.aiprojectgenerator.core.AiCodeGeneratorFacade;
@@ -25,14 +27,11 @@ import com.xing.aiprojectgenerator.model.enums.ChatHistoryMessageTypeEnum;
 import com.xing.aiprojectgenerator.model.enums.CodeGenTypeEnum;
 import com.xing.aiprojectgenerator.model.vo.AppVO;
 import com.xing.aiprojectgenerator.model.vo.UserVO;
-import com.xing.aiprojectgenerator.monitor.MonitorContext;
-import com.xing.aiprojectgenerator.monitor.MonitorContextHolder;
 import com.xing.aiprojectgenerator.service.AppService;
 import com.xing.aiprojectgenerator.service.ChatHistoryService;
-import com.xing.aiprojectgenerator.service.ScreenshotService;
-import com.xing.aiprojectgenerator.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -55,7 +54,8 @@ import java.util.stream.Collectors;
 public class AppServiceImpl extends ServiceImpl<AppMapper, App>  implements AppService{
 
     @Resource
-    private UserService userService;
+    @Lazy
+    private InnerUserService userService;
 
     @Resource
     private AiCodeGeneratorFacade aiCodeGeneratorFacade;
@@ -70,7 +70,8 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App>  implements AppS
     private VueProjectBuilder vueProjectBuilder;
 
     @Resource
-    private ScreenshotService screenshotService;
+    @Lazy
+    private InnerScreenshotService screenshotService;
 
     @Resource
     private AiCodeGenTypeRoutingServiceFactory aiCodeGenTypeRoutingServiceFactory;
@@ -158,21 +159,10 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App>  implements AppS
         }
         // 5. 通过校验后，添加用户消息到对话历史
         chatHistoryService.addChatMessage(appId, message, ChatHistoryMessageTypeEnum.USER.getValue(), loginUser.getId());
-        // 6. 设置监控上下文
-        MonitorContextHolder.setContext(
-                MonitorContext.builder()
-                        .userId(loginUser.getId().toString())
-                        .appId(appId.toString())
-                        .build()
-        );
         // 7. 调用 AI 生成代码（流式）
         Flux<String> codeStream = aiCodeGeneratorFacade.generateAndSaveCodeStream(message, codeGenTypeEnum, appId);
         // 8. 收集 AI 响应内容并在完成后记录到对话历史
-        return streamHandlerExecutor.doExecute(codeStream, chatHistoryService, appId, loginUser, codeGenTypeEnum)
-                .doFinally(signalType -> {
-                    // 流结束时清理（无论成功/失败/取消）
-                    MonitorContextHolder.clearContext();
-                });
+        return streamHandlerExecutor.doExecute(codeStream, chatHistoryService, appId, loginUser, codeGenTypeEnum);
 
 
     }

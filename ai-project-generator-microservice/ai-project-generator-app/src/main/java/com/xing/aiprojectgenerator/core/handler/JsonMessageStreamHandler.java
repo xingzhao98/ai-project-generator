@@ -1,14 +1,11 @@
 package com.xing.aiprojectgenerator.core.handler;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.xing.aiprojectgenerator.ai.model.message.*;
 import com.xing.aiprojectgenerator.ai.tools.BaseTool;
 import com.xing.aiprojectgenerator.ai.tools.ToolManager;
-import com.xing.aiprojectgenerator.constant.AppConstant;
-import com.xing.aiprojectgenerator.core.builder.VueProjectBuilder;
 import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.model.enums.ChatHistoryMessageTypeEnum;
 import com.xing.aiprojectgenerator.service.ChatHistoryService;

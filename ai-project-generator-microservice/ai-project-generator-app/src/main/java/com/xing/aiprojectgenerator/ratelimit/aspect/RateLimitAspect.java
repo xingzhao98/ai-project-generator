@@ -2,9 +2,9 @@ package com.xing.aiprojectgenerator.ratelimit.aspect;
 
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
+import com.xing.aiprojectgenerator.innerservice.InnerUserService;
 import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.ratelimit.annotation.RateLimit;
-import com.xing.aiprojectgenerator.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +16,7 @@ import org.redisson.api.RRateLimiter;
 import org.redisson.api.RateIntervalUnit;
 import org.redisson.api.RateType;
 import org.redisson.api.RedissonClient;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -29,8 +30,10 @@ import java.time.Duration;
 public class RateLimitAspect {
     @Resource
     private RedissonClient redissonClient;
+
     @Resource
-    private UserService userService;
+    @Lazy
+    private InnerUserService userService;
 
     @Before("@annotation(rateLimit)")
     public void doBefore(JoinPoint point, RateLimit rateLimit) {
@@ -68,7 +71,7 @@ public class RateLimitAspect {
                     ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
                     if (attributes != null) {
                         HttpServletRequest request = attributes.getRequest();
-                        User loginUser = userService.getLoginUser(request);
+                        User loginUser = InnerUserService.getLoginUser(request);
                         keyBuilder.append("user:").append(loginUser.getId());
                     } else {
                         // 无法获取请求上下文，使用IP限流
