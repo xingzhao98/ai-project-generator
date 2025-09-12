@@ -1,4 +1,4 @@
-package com.xing.aiprojectgeneratoruser.service.impl;
+package com.xing.aiprojectgenerator.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
@@ -9,11 +9,11 @@ import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
 import com.xing.aiprojectgenerator.model.dto.user.UserQueryRequest;
 import com.xing.aiprojectgenerator.model.entity.User;
-import com.xing.aiprojectgeneratoruser.mapper.UserMapper;
+import com.xing.aiprojectgenerator.mapper.UserMapper;
 import com.xing.aiprojectgenerator.model.enums.UserRoleEnum;
 import com.xing.aiprojectgenerator.model.vo.LoginUserVO;
 import com.xing.aiprojectgenerator.model.vo.UserVO;
-import com.xing.aiprojectgeneratoruser.service.UserService;
+import com.xing.aiprojectgenerator.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.xing.aiprojectgeneratoruser.service;
+package com.xing.aiprojectgenerator.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;

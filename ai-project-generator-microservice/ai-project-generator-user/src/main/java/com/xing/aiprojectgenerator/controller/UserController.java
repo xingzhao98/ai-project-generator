@@ -1,4 +1,4 @@
-package com.xing.aiprojectgeneratoruser.controller;
+package com.xing.aiprojectgenerator.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.mybatisflex.core.paginate.Page; // 导入MyBatis-Flex分页对象
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping; // 导入PostMapping
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.xing.aiprojectgenerator.model.entity.User;
-import com.xing.aiprojectgeneratoruser.service.UserService;
+import com.xing.aiprojectgenerator.service.UserService;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
