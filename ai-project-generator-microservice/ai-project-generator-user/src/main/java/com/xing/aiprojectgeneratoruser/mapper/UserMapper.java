@@ -1,4 +1,4 @@
-package com.xing.aiprojectgenerator.mapper;
+package com.xing.aiprojectgeneratoruser.mapper;
 
 import com.mybatisflex.core.BaseMapper;
 import com.xing.aiprojectgenerator.model.entity.User;

@@ -1,10 +1,10 @@
-package com.xing.aiprojectgenerator.aop;
+package com.xing.aiprojectgeneratoruser.aop;
 
 import com.xing.aiprojectgenerator.annotation.AuthCheck;
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.model.entity.User;
 import com.xing.aiprojectgenerator.model.enums.UserRoleEnum;
-import com.xing.aiprojectgenerator.service.UserService;
+import com.xing.aiprojectgeneratoruser.service.UserService;
 import com.xing.aiprojectgenerator.exception.ErrorCode;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
