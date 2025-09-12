@@ -1,9 +1,7 @@
-package com.xing.aiprojectgenerator.config;
+package com.xing.aiprojectgenerator.ai.config;
 
-import com.xing.aiprojectgenerator.monitor.AiModelMonitorListener;
 import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
-import jakarta.annotation.Resource;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -31,8 +29,6 @@ public class ReasoningStreamingChatModelConfig {
 
     private Boolean logResponses = false;
 
-    @Resource
-    private AiModelMonitorListener aiModelMonitorListener;
 
     @Bean
     @Scope("prototype")
@@ -45,7 +41,6 @@ public class ReasoningStreamingChatModelConfig {
                 .temperature(temperature)
                 .logRequests(logRequests)
                 .logResponses(logResponses)
-                .listeners(List.of(aiModelMonitorListener))
                 .build();
     }
 }

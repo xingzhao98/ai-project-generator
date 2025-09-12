@@ -1,4 +1,4 @@
-package com.xing.aiprojectgenerator.config;
+package com.xing.aiprojectgenerator.ai.config;
 
 import dev.langchain4j.community.store.memory.chat.redis.RedisChatMemoryStore;
 import lombok.Data;
