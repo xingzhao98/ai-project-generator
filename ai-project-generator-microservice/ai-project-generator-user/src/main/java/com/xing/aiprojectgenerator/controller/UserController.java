@@ -10,6 +10,7 @@ import com.xing.aiprojectgenerator.constant.UserConstant;
 import com.xing.aiprojectgenerator.exception.BusinessException;
 import com.xing.aiprojectgenerator.exception.ErrorCode; // 导入错误码枚举
 import com.xing.aiprojectgenerator.exception.ThrowUtils; // 导入异常抛出工具类
+import com.xing.aiprojectgenerator.innerservice.InnerUserService;
 import com.xing.aiprojectgenerator.model.dto.user.*;
 import com.xing.aiprojectgenerator.model.vo.LoginUserVO;
 import com.xing.aiprojectgenerator.model.vo.UserVO;

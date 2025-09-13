@@ -9,6 +9,7 @@ import com.xing.aiprojectgenerator.service.ScreenshotService;
 import com.xing.aiprojectgenerator.utils.WebScreenshotUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,6 +22,7 @@ import java.util.UUID;
 public class ScreenshotServiceImpl implements ScreenshotService {
 
     @Resource
+    @Lazy
     private CosManager cosManager;
 
     @Override
